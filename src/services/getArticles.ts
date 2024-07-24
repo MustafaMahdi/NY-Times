@@ -19,11 +19,14 @@ export async function getArticles(
 
 function structureArticles(res: any): IArticle[] {
     const articles: IArticle[] = res?.results?.map((article: any) => ({
-        title: article.title,
-        abstract: article.abstract,
-        id: article.id,
+        title: article?.title,
+        abstract: article?.abstract,
+        id: article?.id,
         image: article?.media[0]?.["media-metadata"]?.[0]?.url,
-        url: article.url,
+        caption: article?.media[0]?.caption,
+        url: article?.url,
+        updated: article?.updated,
+        byline: article?.byline,
     }));
     return articles;
 }

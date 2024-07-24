@@ -11,8 +11,12 @@ import { IArticle } from "../types";
 
 export function Article({ article }: { article: IArticle }) {
     const navigate = useHistory();
+
     const onArticleClickHandler = () => {
-        navigate.push(`${ROUTES.ARTICLES}/${article.id}`);
+        navigate.push({
+            pathname: `${ROUTES.ARTICLES}/${article.id}`,
+            state: article,
+        });
     };
 
     return (
