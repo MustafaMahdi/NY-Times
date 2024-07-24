@@ -5,3 +5,5 @@ export interface IArticle {
     id: number;
     url: string;
 }
+
+export type IArticlePeriod = "1" | "7" | "30";

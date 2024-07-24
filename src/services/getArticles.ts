@@ -1,15 +1,17 @@
-import { ARTICLES } from "../constants/endpoints";
-import { IArticle } from "../types";
+import { ARTICLES, LAST_1_DAY } from "../constants";
+import { IArticle, IArticlePeriod } from "../types";
 import fetcher from "../utils/api/fetcher";
 import { METHODS } from "../utils/api/methods";
 
-export async function getArticles() {
+export async function getArticles(
+    period: IArticlePeriod = LAST_1_DAY
+): Promise<IArticle[]> {
     const key = process.env.REACT_APP_ARTICLES_API_KEY;
     if (!key) {
         throw new Error("API key is missing");
     }
     const options = { method: METHODS.GET, isAuth: false };
-    const res = await fetcher(ARTICLES(key), options);
+    const res = await fetcher(ARTICLES(key, period), options);
     const articles: IArticle[] = structureArticles(res);
 
     return articles;
