@@ -1,14 +1,27 @@
 import { ARTICLES } from "../constants/endpoints";
+import { IArticle } from "../types";
 import fetcher from "../utils/api/fetcher";
 import { METHODS } from "../utils/api/methods";
 
-const key = process.env.ARTICLES_API_KEY;
 export async function getArticles() {
+    const key = process.env.REACT_APP_ARTICLES_API_KEY;
     if (!key) {
         throw new Error("API key is missing");
     }
     const options = { method: METHODS.GET, isAuth: false };
     const res = await fetcher(ARTICLES(key), options);
+    const articles: IArticle[] = structureArticles(res);
 
-    return res;
+    return articles;
+}
+
+function structureArticles(res: any): IArticle[] {
+    const articles: IArticle[] = res?.results?.map((article: any) => ({
+        title: article.title,
+        abstract: article.abstract,
+        id: article.id,
+        image: article?.media[0]?.["media-metadata"]?.[0]?.url,
+        url: article.url,
+    }));
+    return articles;
 }
