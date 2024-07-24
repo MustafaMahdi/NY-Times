@@ -27,6 +27,7 @@ function structureArticles(res: any): IArticle[] {
         url: article?.url,
         updated: article?.updated,
         byline: article?.byline,
+        source: article?.source,
     }));
     return articles;
 }

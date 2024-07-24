@@ -1,6 +1,6 @@
 import { Divider, Stack } from "@mui/material";
 import { useHistory } from "react-router-dom";
-import { ArticleOverview } from "../components";
+import { ArticleOverview, ArticleOwner } from "../components";
 import { ArticleMainSection } from "../components/ArticleMainSection";
 import { IArticle } from "../types";
 
@@ -19,7 +19,7 @@ export function ArticleDetails() {
                 image={article?.image}
                 content={article?.caption}
             />
-            <Divider sx={{ width: "100%" }} />
+            <ArticleOwner owner={article.byline} source={article.source} />
         </Stack>
     );
 }

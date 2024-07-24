@@ -7,6 +7,7 @@ export interface IArticle {
     caption: string;
     updated: string;
     byline: string;
+    source: string;
 }
 
 export type IArticlePeriod = "1" | "7" | "30";
