@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { ARTICLES, LAST_1_DAY } from "../constants";
 import { IArticle, IArticlePeriod } from "../types";
 import fetcher from "../utils/api/fetcher";
@@ -25,7 +26,7 @@ function structureArticles(res: any): IArticle[] {
         image: article?.media[0]?.["media-metadata"]?.[0]?.url,
         caption: article?.media[0]?.caption,
         url: article?.url,
-        updated: article?.updated,
+        updated: dayjs(article?.updated).format("MMMM D, YYYY h:mm A"),
         byline: article?.byline,
         source: article?.source,
     }));

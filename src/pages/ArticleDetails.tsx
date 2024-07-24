@@ -1,4 +1,4 @@
-import { Divider, Stack } from "@mui/material";
+import { Divider, Stack, Typography } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import { ArticleOverview, ArticleOwner } from "../components";
 import { ArticleMainSection } from "../components/ArticleMainSection";
@@ -19,7 +19,12 @@ export function ArticleDetails() {
                 image={article?.image}
                 content={article?.caption}
             />
-            <ArticleOwner owner={article.byline} source={article.source} />
+            <ArticleOwner
+                owner={article.byline}
+                source={article.source}
+                updated={article.updated}
+            />
+            <Typography variant="body1">{article.abstract}</Typography>
         </Stack>
     );
 }

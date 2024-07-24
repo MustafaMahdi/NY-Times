@@ -3,9 +3,11 @@ import { Avatar, Stack, Typography } from "@mui/material";
 export function ArticleOwner({
     owner,
     source,
+    updated,
 }: {
     owner: string;
     source: string;
+    updated: string;
 }) {
     function stringToColor(string: string) {
         let hash = 0;
@@ -37,14 +39,19 @@ export function ArticleOwner({
         };
     }
     return (
-        <Stack direction={"row"} gap={2} sx={{ alignSelf: "start" }}>
-            <Avatar {...stringAvatar(owner)} />
-            <Stack gap={0.5}>
-                <Typography variant="body1">{owner}</Typography>
-                <Typography variant="body2" color={"text.secondary"}>
-                    {`Reporting from ${source}`}
-                </Typography>
+        <Stack gap={1} sx={{ alignSelf: "start" }}>
+            <Stack direction={"row"} gap={2} sx={{ alignSelf: "start" }}>
+                <Avatar {...stringAvatar(owner)} />
+                <Stack gap={0.5}>
+                    <Typography variant="body1">{owner}</Typography>
+                    <Typography variant="body2" color={"text.secondary"}>
+                        {`Reporting from ${source}`}
+                    </Typography>
+                </Stack>
             </Stack>
+            <Typography variant="body2" color={"text.secondary"}>
+                {updated}
+            </Typography>
         </Stack>
     );
 }
