@@ -5,12 +5,19 @@ import {
     CardMedia,
     Typography,
 } from "@mui/material";
+import { useHistory } from "react-router-dom";
+import { ROUTES } from "../constants";
 import { IArticle } from "../types";
 
 export function Article({ article }: { article: IArticle }) {
+    const navigate = useHistory();
+    const onArticleClickHandler = () => {
+        navigate.push(`${ROUTES.ARTICLES}/${article.id}`);
+    };
+
     return (
         <Card sx={{ maxWidth: 400 }}>
-            <CardActionArea>
+            <CardActionArea onClick={onArticleClickHandler}>
                 <CardMedia sx={{ height: 170 }} image={article?.image} />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">

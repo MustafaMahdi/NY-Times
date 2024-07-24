@@ -2,7 +2,7 @@ import { Stack, Typography } from "@mui/material";
 import { Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
 import { ROUTES } from "./constants";
-import { Articles } from "./pages";
+import { ArticleDetails, Articles } from "./pages";
 import ProviderWrapper from "./providers/ProviderWrapper";
 
 function App() {
@@ -17,6 +17,9 @@ function App() {
                         </Route>
                         <Route path={ROUTES.ARTICLES} exact>
                             <Articles />
+                        </Route>
+                        <Route path={`${ROUTES.ARTICLES}/:articleId`} exact>
+                            <ArticleDetails />
                         </Route>
                     </Switch>
                 </Stack>
