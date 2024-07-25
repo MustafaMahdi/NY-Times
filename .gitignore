@@ -13,7 +13,7 @@
 
 # misc
 .DS_Store
-.env.local
+# .env.local  // Uncomment this line if you want to ignore .env.local file [did that to make it easy for your to run the project]
 .env.development.local
 .env.test.local
 .env.production.local
